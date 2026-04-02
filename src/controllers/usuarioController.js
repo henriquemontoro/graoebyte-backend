@@ -21,6 +21,13 @@ export const deleteUsuario = async (req, res) => {
 export const updateUsuario = async (req, res) => {
   try {
     const { role } = req.body
+    if (role === 'funcionario') {
+      const admins = await Usuario.countDocuments({ role: 'admin' })
+      const usuario = await Usuario.findById(req.params.id)
+      if (admins === 1 && usuario.role === 'admin') {
+        return res.status(400).json({ message: 'Não é possível remover o único admin do sistema.' })
+      }
+    }
     const usuario = await Usuario.findByIdAndUpdate(req.params.id, { role }, { new: true }).select('-senha')
     res.json(usuario)
   } catch (err) {

@@ -16,3 +16,12 @@ export const criarLog = async (usuario, acao, detalhe) => {
     console.log('Erro ao criar log:', err)
   }
 }
+
+export const limparLogs = async (req, res) => {
+  try {
+    await Log.deleteMany({})
+    res.json({ message: 'Histórico limpo!' })
+  } catch (err) {
+    res.status(500).json({ message: err.message })
+  }
+}

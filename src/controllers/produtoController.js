@@ -21,8 +21,8 @@ export const getProdutoById = async (req, res) => {
 
 export const createProduto = async (req, res) => {
   try {
-    const { nome, descricao, preco } = req.body
-    const produto = await Produto.create({ nome, descricao, preco })
+    const { nome, descricao, preco, categoria } = req.body
+    const produto = await Produto.create({ nome, descricao, preco, categoria })
     await criarLog(req.usuario?.email || 'desconhecido', 'criou produto', nome)
     res.status(201).json(produto)
   } catch (err) {
