@@ -53,7 +53,8 @@ npm run dev
 | Método | Rota | Descrição |
 |--------|------|-----------|
 | GET | /usuarios | Listar usuários |
-| PUT | /usuarios/:id | Alterar role |
+| GET | /usuarios/:id | Buscar usuário por ID |
+| PUT | /usuarios/:id | Editar usuário |
 | DELETE | /usuarios/:id | Deletar usuário |
 
 ### Logs
@@ -62,14 +63,17 @@ npm run dev
 | GET | /logs | Listar histórico |
 | DELETE | /logs | Limpar histórico |
 
-## Modelo de Produto
-- nome, descrição, preço, categoria, disponível, timestamps
+## Modelos
 
-## Modelo de Usuário
-- email, senha (criptografada), role (admin/funcionario)
+### Produto
+- nome (único), descrição, preço, categoria, disponível, timestamps
+
+### Usuário
+- nome (único), email (único), senha (criptografada), role (admin/funcionario)
 
 ## Segurança
 - Senhas criptografadas com bcryptjs
-- Autenticação via JWT
+- Requisitos de senha: mínimo 8 caracteres, 1 maiúscula, 1 número, 1 símbolo
+- Autenticação via JWT com nome e role no token
 - Proteção contra remoção do único admin
-- Logs de todas as ações do sistema
+- Logs detalhados de todas as ações do sistema
