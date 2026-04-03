@@ -1,6 +1,6 @@
 # Grão & Byte — Backend
 
-API REST desenvolvida para o sistema de gestão interna da cafeteria Grão & Byte.
+API REST para o sistema de gestão interna da cafeteria Grão & Byte.
 
 ## Tecnologias
 - Node.js + Express
@@ -44,7 +44,7 @@ npm run dev
 | Método | Rota | Descrição |
 |--------|------|-----------|
 | GET | /produtos | Listar produtos |
-| GET | /produtos/:id | Buscar produto |
+| GET | /produtos/:id | Buscar produto por ID |
 | POST | /produtos | Criar produto |
 | PUT | /produtos/:id | Editar produto |
 | DELETE | /produtos/:id | Deletar produto |
@@ -61,3 +61,15 @@ npm run dev
 |--------|------|-----------|
 | GET | /logs | Listar histórico |
 | DELETE | /logs | Limpar histórico |
+
+## Modelo de Produto
+- nome, descrição, preço, categoria, disponível, timestamps
+
+## Modelo de Usuário
+- email, senha (criptografada), role (admin/funcionario)
+
+## Segurança
+- Senhas criptografadas com bcryptjs
+- Autenticação via JWT
+- Proteção contra remoção do único admin
+- Logs de todas as ações do sistema
