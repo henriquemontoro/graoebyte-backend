@@ -1,6 +1,7 @@
 import mongoose from 'mongoose'
 
 const usuarioSchema = new mongoose.Schema({
+  nome: { type: String, required: true, unique: true },
   email: { type: String, required: true, unique: true },
   senha: { type: String, required: true },
   role: { type: String, enum: ['admin', 'funcionario'], default: 'funcionario' }
